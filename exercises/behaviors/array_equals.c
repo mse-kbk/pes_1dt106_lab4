@@ -16,4 +16,18 @@
     complete behaviors;
     disjoint behaviors;
 */
-int array_equals(int* a, int* b, int n);
+int array_equals(int* a, int* b, int n)
+{
+    /*@
+        loop invariant 0 <= i <= n;
+        loop invariant \forall int j; 0 <= j < i ==> a[j] == b[j];
+        loop assigns i;
+        loop variant n - i;
+    */
+    for (int i = 0; i < n; i++) {
+        if (a[i] != b[i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
