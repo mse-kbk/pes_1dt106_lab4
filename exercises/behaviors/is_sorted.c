@@ -1,5 +1,5 @@
 /*@
-    requires len >= 0;
+    requires len >= 1;
     requires \valid_read(arr + (0 .. len-1));
     
     assigns \nothing;
@@ -17,8 +17,11 @@
 */
 int is_sorted(int* arr, int len) 
 {
+	if (len == 1) {
+        return 1;
+    }
     /*@
-        loop invariant 0 <= i <= len;
+        loop invariant 1 <= i <= len;
         loop invariant \forall int j, k; 0 <= j <= k < i ==> arr[j] <= arr[k];
         loop assigns i;
         loop variant len - i;

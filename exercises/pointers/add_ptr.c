@@ -1,5 +1,16 @@
+#include <limits.h>
+
+ /*@
+	requires INT_MIN <= (*a+*b) <= INT_MAX;
+        requires \valid(a) && \valid(b);
+	ensures \result == *a + *b;
+	assigns \nothing;
+*/
 int add_ptr(int* a, int* b)
 {
+	int res = 0;
+	res = *a + *b;
+	return res;
     
 }
 

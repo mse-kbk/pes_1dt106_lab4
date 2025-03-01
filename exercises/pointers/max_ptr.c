@@ -1,9 +1,22 @@
+/*@
+	requires \valid(x) && \valid(y);
+	ensures *x >= *y;
+	assigns \nothing;
+	ensures (*x == \old(*x) && *y == \old(*y)) ||
+        	(*x == \old(*y) && *y == \old(*x));
+*/
+
 void max_ptr(int* x, int* y)
 {
-
+    if (*y > *x) {
+        int tmp = *x;
+        *x = *y;
+        *y = tmp;
+    }
 }
 
 int v = 5;
+
 void main(void)
 {
     int x = 10;
@@ -20,3 +33,4 @@ void main(void)
     //@ assert y == 8;
     //@ assert v == 5;
 }
+
